@@ -10,4 +10,40 @@ package com.mycompany.novexa;
  */
 public class WorkExperience {
     
+    private String companyName;
+    private String position;
+    private int duration; 
+
+    public WorkExperience(String companyName, String position, int duration) {
+        this.companyName = companyName;
+        this.position = position;
+        this.duration = duration;
+    }
+
+    public WorkExperience() {
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 }

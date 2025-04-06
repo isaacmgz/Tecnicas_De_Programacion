@@ -10,4 +10,22 @@ package com.mycompany.novexa;
  */
 public class Skill {
     
+    private String expertise;
+
+    public Skill(String expertise) {
+        this.expertise = expertise;
+    }
+
+    public Skill() {
+    }
+
+    public String getExpertise() {
+        return expertise;
+    }
+
+    public void setExpertise(String expertise) {
+        this.expertise = expertise;
+    }
+    
+    
 }
