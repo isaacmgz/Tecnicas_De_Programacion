@@ -12,11 +12,13 @@ public class WorkExperience {
     
     private String companyName;
     private String position;
+    private String rolSpecification;
     private int duration; 
 
-    public WorkExperience(String companyName, String position, int duration) {
+    public WorkExperience(String companyName, String position, String rolSpecification,int duration) {
         this.companyName = companyName;
         this.position = position;
+        this.rolSpecification = rolSpecification;
         this.duration = duration;
     }
 
@@ -45,5 +47,13 @@ public class WorkExperience {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public String getRolSpecification() {
+        return rolSpecification;
+    }
+
+    public void setRolSpecification(String rolSpecification) {
+        this.rolSpecification = rolSpecification;
     }
 }
