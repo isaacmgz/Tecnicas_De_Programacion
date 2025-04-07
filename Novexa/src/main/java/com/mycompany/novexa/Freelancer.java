@@ -10,37 +10,28 @@ package com.mycompany.novexa;
  */
 public class Freelancer {
     
-    private String name;
     private int idFreelancer;
+    private String name;
+    private String emailFreelancer;
     private int costPerHour;
+    private String nationality;
     
     private AcademicRecord academicRecord;
     private WorkExperience workExperience;
     private Skill skill;
 
-    public Freelancer(String name, int idFreelancer, int costPerHour, AcademicRecord academicRecord, WorkExperience workExperience, Skill skill) {
-        this.name = name;
-        this.idFreelancer = idFreelancer;
-        this.costPerHour = costPerHour;
-        this.academicRecord = academicRecord;
-        this.workExperience = workExperience;
-        this.skill = skill;
-    }
-
     public Freelancer() {
     }
 
-    @Override
-    public String toString() {
-        return "Freelancer{" + "name=" + name + ", idFreelancer=" + idFreelancer + ", costPerHour=" + costPerHour + ", academicRecord=" + academicRecord + ", workExperience=" + workExperience + ", skill=" + skill + '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Freelancer(int idFreelancer, String name, String emailFreelancer, int costPerHour, String nationality, AcademicRecord academicRecord, WorkExperience workExperience, Skill skill) {
+        this.idFreelancer = idFreelancer;
         this.name = name;
+        this.emailFreelancer = emailFreelancer;
+        this.costPerHour = costPerHour;
+        this.nationality = nationality;
+        this.academicRecord = academicRecord;
+        this.workExperience = workExperience;
+        this.skill = skill;
     }
 
     public int getIdFreelancer() {
@@ -51,12 +42,36 @@ public class Freelancer {
         this.idFreelancer = idFreelancer;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmailFreelancer() {
+        return emailFreelancer;
+    }
+
+    public void setEmailFreelancer(String emailFreelancer) {
+        this.emailFreelancer = emailFreelancer;
+    }
+
     public int getCostPerHour() {
         return costPerHour;
     }
 
     public void setCostPerHour(int costPerHour) {
         this.costPerHour = costPerHour;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
     public AcademicRecord getAcademicRecord() {
