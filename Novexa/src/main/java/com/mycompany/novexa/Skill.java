@@ -10,22 +10,51 @@ package com.mycompany.novexa;
  */
 public class Skill {
     
-    private String expertise;
-
-    public Skill(String expertise) {
-        this.expertise = expertise;
-    }
+    private String languageProgramming;
+    private String level;
+    private String englishLevel;
+    private String additionalSkills;
 
     public Skill() {
     }
 
-    public String getExpertise() {
-        return expertise;
+    public Skill(String languageProgramming, String level, String englishLevel, String additionalSkills) {
+        this.languageProgramming = languageProgramming;
+        this.level = level;
+        this.englishLevel = englishLevel;
+        this.additionalSkills = additionalSkills;
     }
 
-    public void setExpertise(String expertise) {
-        this.expertise = expertise;
+    public String getAdditionalSkills() {
+        return additionalSkills;
     }
-    
+
+    public void setAdditionalSkills(String additionalSkills) {
+        this.additionalSkills = additionalSkills;
+    }
+
+    public String getLanguageProgramming() {
+        return languageProgramming;
+    }
+
+    public void setLanguageProgramming(String languageProgramming) {
+        this.languageProgramming = languageProgramming;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getEnglishLevel() {
+        return englishLevel;
+    }
+
+    public void setEnglishLevel(String englishLevel) {
+        this.englishLevel = englishLevel;
+    }
     
 }
