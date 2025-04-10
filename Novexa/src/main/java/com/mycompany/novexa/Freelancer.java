@@ -10,7 +10,7 @@ package com.mycompany.novexa;
  */
 public class Freelancer {
     
-    private int idFreelancer;
+    private String idFreelancer;
     private String name;
     private String emailFreelancer;
     private int costPerHour;
@@ -23,7 +23,7 @@ public class Freelancer {
     public Freelancer() {
     }
 
-    public Freelancer(int idFreelancer, String name, String emailFreelancer, int costPerHour, String nationality, AcademicRecord academicRecord, WorkExperience workExperience, Skill skill) {
+    public Freelancer(String idFreelancer, String name, String emailFreelancer, int costPerHour, String nationality, AcademicRecord academicRecord, WorkExperience workExperience, Skill skill) {
         this.idFreelancer = idFreelancer;
         this.name = name;
         this.emailFreelancer = emailFreelancer;
@@ -34,11 +34,11 @@ public class Freelancer {
         this.skill = skill;
     }
 
-    public int getIdFreelancer() {
+    public String getIdFreelancer() {
         return idFreelancer;
     }
 
-    public void setIdFreelancer(int idFreelancer) {
+    public void setIdFreelancer(String idFreelancer) {
         this.idFreelancer = idFreelancer;
     }
 
