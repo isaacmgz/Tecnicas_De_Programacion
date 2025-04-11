@@ -97,4 +97,9 @@ public class Freelancer {
     public void setSkill(Skill skill) {
         this.skill = skill;
     }
+
+    @Override
+    public String toString() {
+        return "Freelancer{" + "idFreelancer=" + idFreelancer + ", name=" + name + ", emailFreelancer=" + emailFreelancer + ", costPerHour=" + costPerHour + ", nationality=" + nationality + ", academicRecord=" + academicRecord + ", workExperience=" + workExperience + ", skill=" + skill + '}';
+    }
 }
