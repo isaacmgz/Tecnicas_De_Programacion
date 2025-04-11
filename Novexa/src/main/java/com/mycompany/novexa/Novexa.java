@@ -22,6 +22,7 @@ public class Novexa {
     
     public static void principalMenu(){
         String option;
+        Management management = new Management(); // tool 
         
         option = JOptionPane.showInputDialog(
             null,
@@ -32,16 +33,14 @@ public class Novexa {
             "Elige una opción:");
         
         if ("1".equals(option)){
-            Management management = new Management();
             management.administrationMenu();
         }
         if ("2".equals(option)){
-            Freelancer freelancer = new Freelancer();
-            freelancer.freelancerMenu();
+            management.freelancerMenu();
         }
         if ("3".equals(option)){
             Client client = new Client();
-            client.clientMenu();
+            management.clientMenu();
         }
     }
     
