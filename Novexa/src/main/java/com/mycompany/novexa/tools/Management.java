@@ -50,14 +50,6 @@ public class Management {
         } while (!"3".equals(option));
     }
     
-    private void filterFreelancerLanguage(String searchSkill){
-        for(Freelancer f : freelancers){
-            if(f.getSkill().getLanguageProgramming().equals(searchSkill)){
-                System.out.println("El freelancer"+f+"Usa el lenguaje"+ searchSkill);
-            }
-        }
-    }
-    
     public void freelancerMenu(){
         String option;
         
@@ -88,16 +80,6 @@ public class Management {
         } while (!"3".equals(option));
     }
     
-    private void displayFreelancer(String IdFreelancer){
-        for(Freelancer f: freelancers){
-            if(f.getIdFreelancer().equals(IdFreelancer)){
-                System.out.println(f.toString());
-            }else {
-                System.out.println("Este Freelancer no esta registrado");
-            }
-        }       
-    }
-
     private void addFreelancer() {
 
         String option;
@@ -179,7 +161,25 @@ public class Management {
 
     freelancers.add(freelancer);
     JOptionPane.showMessageDialog(null, "Freelancer agregado correctamente.");
-}
+    }
+    
+    public void filterFreelancerLanguage(String searchSkill){
+        for(Freelancer f : freelancers){
+            if(f.getSkill().getLanguageProgramming().equals(searchSkill)){
+                System.out.println("El freelancer"+f+"Usa el lenguaje"+ searchSkill);
+            }
+        }
+    }
+    
+    private void displayFreelancer(String IdFreelancer){
+        for(Freelancer f: freelancers){
+            if(f.getIdFreelancer().equals(IdFreelancer)){
+                System.out.println(f.toString());
+            }else {
+                System.out.println("Este Freelancer no esta registrado");
+            }
+        }       
+    }
 
     private void findFreelancer() {
         String searchId = JOptionPane.showInputDialog("Ingrese el Id del Freelancer a buscar");
@@ -196,6 +196,24 @@ public class Management {
             JOptionPane.showMessageDialog(null, "Freelancer no encontrado.");
         }
     }
+    
+    public boolean verificationFreelancer(String IdFreelancer){
+        for(Freelancer f: freelancers){
+            if(f.getIdFreelancer().equals(IdFreelancer)){
+                return true;
+            }
+        }System.out.println("Este Freelancer no está registrado");
+        return false;
+    }
+    
+    public Freelancer getFreelancerById(String IdFreelancer){
+        for(Freelancer f: freelancers){
+            if(f.getIdFreelancer().equals(IdFreelancer)){
+                return f;
+            }
+        }return null;
+    }
+    
     private void ClientMenu(){
           String option;
         
@@ -245,8 +263,6 @@ public class Management {
     }
     
     public void addClient(){
-        String option;
-
         Client client = new Client();
         
         client.setNameClient(JOptionPane.showInputDialog("Agregue el nombre del Client"));
@@ -255,16 +271,7 @@ public class Management {
         clients.add(client);
     }
     
-    private boolean verificationFreelancer(String IdFreelancer){
-        for(Freelancer f: freelancers){
-            if(f.getIdFreelancer().equals(IdFreelancer)){
-                return true;
-            }else {
-                System.out.println("Este Freelancer no esta registrado");
-                return false;
-            }
-        }       
-    }
+    
     
     public void ManageCon(){
         
@@ -272,6 +279,7 @@ public class Management {
         String nameClient = JOptionPane.showInputDialog("Ingrese el nombre de su empresa");
         
         for ( Client c : clients){
+            
             if(nameClient.equals(c.getNameClient())){
                 String nameProject = JOptionPane.showInputDialog("Ingrese el nombre del proyecto");
                 contract.setNameProject(nameProject);
@@ -279,9 +287,20 @@ public class Management {
                 contract.setDuration(durationProject);
                 String idFreelancer = JOptionPane.showInputDialog("Ingrese el ID del Freelancer a contratar");
                 while (verificationFreelancer(idFreelancer)){
-                
+                    contract.setFreelancer(getFreelancerById(idFreelancer));
+                String opcion;
+                do{
+                    opcion = JOptionPane.showInputDialog("Desea agregar otro freelancer 1.Si\n2.No");                    
+                    if (opcion.equals("1")){
+                        String idFreelancerNew = JOptionPane.showInputDialog("Ingrese el ID del Freelancer a contratar");
+                        while (verificationFreelancer(idFreelancerNew)){
+                        contract.setFreelancer(getFreelancerById(idFreelancerNew));
+                        }
+                    }
+                }while(!"2".equals(opcion));
+                }
+               
             }
-            };
         }
         
     } 

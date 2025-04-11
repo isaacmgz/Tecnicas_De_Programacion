@@ -8,6 +8,11 @@ package com.mycompany.novexa.tools;
  *
  * @author Simón
  */
+
+import com.mycompany.novexa.*;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
+
 public class ManageContract {
     
 }
