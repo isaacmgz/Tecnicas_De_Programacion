@@ -14,15 +14,17 @@ public class ClientContract {
     private double comission;
     
     private Freelancer freelancer;
+    private Client client;
 
     public ClientContract() {
     }
 
-    public ClientContract(String nameProject, int duration, double comission, Freelancer freelancer) {
+    public ClientContract(String nameProject, int duration, double comission, Freelancer freelancer, Client client) {
         this.nameProject = nameProject;
         this.duration = duration;
         this.comission = comission;
         this.freelancer = freelancer;
+        this.client = client;
     }
 
     public Freelancer getFreelancer() {
@@ -55,6 +57,14 @@ public class ClientContract {
 
     public void setComission(double comission) {
         this.comission = comission;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
     
 }
