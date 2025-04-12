@@ -12,11 +12,25 @@ package com.mycompany.novexa.AccountingCompany;
 import com.mycompany.novexa.*;
 import static com.mycompany.novexa.AccountingCompany.SuperviseContract.contracts;
 import javax.swing.JOptionPane;
-import java.util.ArrayList;
 
 public class Accounting {
-/**
- * un ciclo for por todos los contratos y ir sumando los totales, mostrar lo generado por la emperesa en total, todo los
- * pagos a los freelancer y lo que tenemos
- */
+ 
+    public static void accountStatement(){
+        
+        double netProfits = 0;
+        double freelancerEarnings = 0;
+        double companyProfits = 0;
+        
+        for (ClientContract c : contracts){
+            netProfits = netProfits + c.getContractCost();
+            companyProfits = companyProfits + c.getContractCost()*0.1;
+            freelancerEarnings = freelancerEarnings + (c.getContractCost()-c.getContractCost()*0.1);
+            
+        JOptionPane.showInternalMessageDialog(
+            null, "Las ganancias netas generadas por la empresa son de: "+netProfits+
+            "\nLas ganancias totales para la empresa es de: "+companyProfits+
+            "\nLas ganancias totales generadas para los Freelancer son de"+freelancerEarnings
+        );
+        }
+    }
 }

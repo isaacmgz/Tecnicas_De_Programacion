@@ -11,6 +11,7 @@ package com.mycompany.novexa.tools;
 
 import com.mycompany.novexa.*;
 import javax.swing.JOptionPane;
+import com.mycompany.novexa.AccountingCompany.Accounting;
 
 public class ManageNovexa {
     
@@ -20,38 +21,20 @@ public class ManageNovexa {
         do {
             option = JOptionPane.showInputDialog(
                 "Administrator Menu\n\n" +
-                "1. Add a Freelancer\n" +
-                "2. Find a Freelancer\n" +
-                "3. Check bank state\n" + // Pendiente por hacer
-                "4. Exit\n\n" +
+                "1. Find a Freelancer\n" +
+                "2. Check bank state\n" + 
+                "3. Exit\n\n" +
                 "Elige una opción:"
             );
-
             switch(option) {
                 case "1":
-                    
-                    String input = JOptionPane.showInputDialog(null, "Exiting the Admiistrator Menu");
-                    filterFreelancerLanguage(input);
-                    break;
-                case "2":
                     findFreelancer();
                     break;
-                case "3":
-                    JOptionPane.showMessageDialog(null, "Exiting the Admiistrator Menu");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida.");
+                case "2":
+                    Accounting.accountStatement();
                     break;
             }
         } while (!"3".equals(option));
-    }
-    
-    public static void filterFreelancerLanguage(String searchSkill) {
-        for(Freelancer f : ManageFreelancer.freelancers){
-            if(f.getSkill().getLanguageProgramming().equals(searchSkill)){
-                JOptionPane.showMessageDialog(null, "El freelancer"+f+"Usa el lenguaje"+ searchSkill);
-            }
-        }
     }
     
     public static void findFreelancer() {

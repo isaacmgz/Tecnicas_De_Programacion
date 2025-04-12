@@ -23,7 +23,7 @@ public class ClientContract {
         this.nameProject = nameProject;
         this.duration = duration;
         this.contractCost = contractCost;
-        this.comission = 0.1; // stablished comission
+        this.comission = comission; // stablished comission
         this.freelancer = freelancer;
         this.client = client;
     }
@@ -67,17 +67,17 @@ public class ClientContract {
     public void setClient(Client client) {
         this.client = client;
     }
-
-    @Override
-    public String toString() {
-        return "ClientContract{" + "nameProject=" + nameProject + ", duration=" + duration + ", comission=" + comission*100 +"%" + ", freelancer=" + freelancer + ", client=" + client + '}';
-    }
-
+    
     public double getContractCost() {
         return contractCost;
     }
 
     public void setContractCost(double contractCost) {
         this.contractCost = contractCost;
+    }
+
+    @Override
+    public String toString() {
+        return "ClientContract:" + "\nnameProject=" + nameProject + "\nduration=" + duration + "\ncontractCost=" + contractCost + "\nfreelancer=" + freelancer + "\nclient=" + client;
     }
 }

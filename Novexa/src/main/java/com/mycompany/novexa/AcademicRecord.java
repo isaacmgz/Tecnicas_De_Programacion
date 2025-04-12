@@ -46,4 +46,11 @@ public class AcademicRecord {
     public void setYear(String year) {
         this.year = year;
     }
+
+    @Override
+    public String toString() {
+        return "AcademicRecord:" + "\ndegree=" + degree + "\ninstitution=" + institution + "\nyear=" + year;
+    }
+    
+    
 }

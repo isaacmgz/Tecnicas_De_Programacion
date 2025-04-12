@@ -4,6 +4,8 @@
  */
 package com.mycompany.novexa;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author isaacmgz
@@ -15,20 +17,26 @@ public class Freelancer {
     private String emailFreelancer;
     private int costPerHour;
     private String nationality;
+    private String englishLevel;
     
     private AcademicRecord academicRecord;
     private WorkExperience workExperience;
     private Skill skill;
+    
+    public ArrayList<Skill> skills = new ArrayList<>();
+    public ArrayList<WorkExperience> workExperiences = new ArrayList<>();
+    public ArrayList<AcademicRecord> academicRecords = new ArrayList<>();
 
     public Freelancer() {
     }
 
-    public Freelancer(String idFreelancer, String name, String emailFreelancer, int costPerHour, String nationality, AcademicRecord academicRecord, WorkExperience workExperience, Skill skill) {
+    public Freelancer(String idFreelancer, String name, String emailFreelancer, int costPerHour, String nationality, String englishLevel, AcademicRecord academicRecord, WorkExperience workExperience, Skill skill) {
         this.idFreelancer = idFreelancer;
         this.name = name;
         this.emailFreelancer = emailFreelancer;
         this.costPerHour = costPerHour;
         this.nationality = nationality;
+        this.englishLevel = englishLevel;
         this.academicRecord = academicRecord;
         this.workExperience = workExperience;
         this.skill = skill;
@@ -100,6 +108,14 @@ public class Freelancer {
 
     @Override
     public String toString() {
-        return "Freelancer{" + "\nidFreelancer=" + idFreelancer + "\nname=" + name + "\nemailFreelancer=" + emailFreelancer + "\n costPerHour=" + costPerHour + "\n nationality=" + nationality + "\nacademicRecord=" + academicRecord + "\nworkExperience=" + workExperience + "\nskill=" + skill + '}';
+        return "Freelancer{" + "\nidFreelancer=" + idFreelancer + "\nname=" + name + "\nemailFreelancer=" + emailFreelancer + "\n costPerHour=" + costPerHour + "\n nationality=" + nationality + "\n english level= "+englishLevel+ "\nskill=" + skills + "\nworkExperience=" + workExperiences + "\nacademicRecord=" + academicRecords  + '}';
+    }
+
+    public String getEnglishLevel() {
+        return englishLevel;
+    }
+
+    public void setEnglishLevel(String englishLevel) {
+        this.englishLevel = englishLevel;
     }
 }

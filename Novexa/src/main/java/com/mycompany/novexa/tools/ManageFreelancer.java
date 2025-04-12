@@ -47,21 +47,15 @@ public class ManageFreelancer {
                                 comissionn = costo*0.1;
                                 
                                 JOptionPane.showMessageDialog(null, "El costo total del contrato un pago de "+costo);
-                                JOptionPane.showMessageDialog(null, "Y le corresponde una comisión a la empresa de "+comissionn);
+                                JOptionPane.showMessageDialog(null, "Le corresponde una comisión a la empresa de "+comissionn);
                                 JOptionPane.showMessageDialog(null, "A ti te toca:"+(costo-comissionn));
-                            }
-                         
+                            }//endIf
                         }JOptionPane.showMessageDialog(null, "Aún no tienes contratos");
-                    
-                    
-                    break;
-                case "3":
-                    JOptionPane.showMessageDialog(null, "Exiting the Admiistrator Menu");
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opción no válida.");
                     break;
-            }
+            }//endSwitch
         } while (!"3".equals(option));
     }
     
@@ -71,11 +65,13 @@ public class ManageFreelancer {
 
         Freelancer freelancer = new Freelancer();
         
+        
         freelancer.setName(JOptionPane.showInputDialog("Agregue el nombre del Freelancer"));
         freelancer.setIdFreelancer(JOptionPane.showInputDialog("Agregue el Id del Freelancer")); 
         freelancer.setEmailFreelancer(JOptionPane.showInputDialog("Agregue el correo del Freelancer"));
         freelancer.setCostPerHour(Integer.parseInt(JOptionPane.showInputDialog("Agregue el costo por hora del Freelancer ($USD)"))); 
         freelancer.setNationality(JOptionPane.showInputDialog("Agregue la nacionalidad del Freelancer"));
+        freelancer.setEnglishLevel(JOptionPane.showInputDialog("Ingrese tu nivel de ingles"));
 
         do {
             option = JOptionPane.showInputDialog(
@@ -93,53 +89,51 @@ public class ManageFreelancer {
                     
                     String nameSkill = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
                     skill.setLanguageProgramming(nameSkill);
-                    freelancer.setSkill(skill);
+                    //freelancer.setSkill(skill);
+                    //freelancer.skills.add(skill);
                     
-                    String levelSkill = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
-                    skill.setLevel(levelSkill);
+                    String senioritySkill = JOptionPane.showInputDialog("Ingrese el nivel de la Skill");
+                    skill.setSeniority(senioritySkill);
                     freelancer.setSkill(skill);
-                    
-                    String englishLevel = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
-                    skill.setEnglishLevel(englishLevel);
-                    freelancer.setSkill(skill);
-                    
-                    String additionalSkills = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
-                    skill.setAdditionalSkills(additionalSkills);
-                    freelancer.setSkill(skill);
+                    freelancer.skills.add(skill);
                     break;
                 case "2":
                     WorkExperience workExperience = new WorkExperience();
                     
-                    String nameCompany = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
+                    String nameCompany = JOptionPane.showInputDialog("Ingrese el nombre de la compañia");
                     workExperience.setCompanyName(nameCompany);
-                    freelancer.setWorkExperience(workExperience);
+                    //freelancer.setWorkExperience(workExperience);
                     
-                    String namePosition = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
+                    String namePosition = JOptionPane.showInputDialog("Ingrese el nombre de la posicion en la empresa");
                     workExperience.setPosition(namePosition);
-                    freelancer.setWorkExperience(workExperience);
+                    //freelancer.setWorkExperience(workExperience);
                     
-                    String rolSpecification = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
+                    String rolSpecification = JOptionPane.showInputDialog("Ingrese el rol que desempeñó");
                     workExperience.setRolSpecification(rolSpecification);
-                    freelancer.setWorkExperience(workExperience);
+                    //freelancer.setWorkExperience(workExperience);
                     
-                    int duration = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nombre de la Skill"));
+                    int duration = Integer.parseInt(JOptionPane.showInputDialog("cuanto tiempo estuvo en la empresa (en años)"));
                     workExperience.setDuration(duration);
+                    
                     freelancer.setWorkExperience(workExperience);
+                    freelancer.workExperiences.add(workExperience);
                     break;
                 case "3":
                     AcademicRecord academicRecord = new AcademicRecord();
                     
-                    String nameDegree = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
+                    String nameDegree = JOptionPane.showInputDialog("Ingrese el nombre del grado/curso etc");
                     academicRecord.setDegree(nameDegree);
-                    freelancer.setAcademicRecord(academicRecord);
+                    //freelancer.setAcademicRecord(academicRecord);
                     
-                    String nameInstitution = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
+                    String nameInstitution = JOptionPane.showInputDialog("Ingrese el nombre de la institucion");
                     academicRecord.setInstitution(nameInstitution);
-                    freelancer.setAcademicRecord(academicRecord);
+                    //freelancer.setAcademicRecord(academicRecord);
                     
-                    String year = JOptionPane.showInputDialog("Ingrese el nombre de la Skill");
+                    String year = JOptionPane.showInputDialog("Ingrese el año que lo obtuvo");
                     academicRecord.setYear(year);
+                    
                     freelancer.setAcademicRecord(academicRecord);
+                    freelancer.academicRecords.add(academicRecord);
                     break;
             }
         } while(!"4".equals(option));

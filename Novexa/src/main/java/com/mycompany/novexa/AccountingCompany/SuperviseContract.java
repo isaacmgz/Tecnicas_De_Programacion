@@ -27,22 +27,27 @@ public class SuperviseContract {
         double totalCost=0;
         
         for ( Client c : clients){
-            
-            if(nameClient.equals(c.getNameClient())){                
+            if(nameClient.equals(c.getNameClient())){ //Asegurarnos que la empresa esté registrada
                 
                 String nameProject = JOptionPane.showInputDialog("Ingrese el nombre del proyecto");
                 contract.setNameProject(nameProject);
+                
                 int durationProject = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la duración del proyecto en meses"));
                 contract.setDuration(durationProject);
                 String idFreelancer = JOptionPane.showInputDialog("Ingrese el ID del Freelancer a contratar");
+                
                 while (verificationFreelancer(idFreelancer)){
                     contract.setFreelancer(getFreelancerById(idFreelancer));
                     contract.setContractCost(totalCost + (getFreelancerById(idFreelancer).getCostPerHour()*durationProject*160));
                 }
+            }//endIf
+            else{
+                JOptionPane.showMessageDialog(null,"Asegurese que su empresa esté registrada primero");
+                break;
             }
-        } 
+        }//endFor 
         contracts.add(contract);
-        JOptionPane.showMessageDialog(null, "Contrato creado correctamente.");
+        JOptionPane.showMessageDialog(null, contract.toString());
     }
     
     public static boolean verificationFreelancer(String IdFreelancer){

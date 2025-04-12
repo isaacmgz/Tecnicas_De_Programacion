@@ -11,26 +11,14 @@ package com.mycompany.novexa;
 public class Skill {
     
     private String languageProgramming;
-    private String level;
-    private String englishLevel;
-    private String additionalSkills;
+    private String seniority;
 
     public Skill() {
     }
 
-    public Skill(String languageProgramming, String level, String englishLevel, String additionalSkills) {
+    public Skill(String languageProgramming, String seniority) {
         this.languageProgramming = languageProgramming;
-        this.level = level;
-        this.englishLevel = englishLevel;
-        this.additionalSkills = additionalSkills;
-    }
-
-    public String getAdditionalSkills() {
-        return additionalSkills;
-    }
-
-    public void setAdditionalSkills(String additionalSkills) {
-        this.additionalSkills = additionalSkills;
+        this.seniority = seniority;
     }
 
     public String getLanguageProgramming() {
@@ -41,20 +29,18 @@ public class Skill {
         this.languageProgramming = languageProgramming;
     }
 
-    public String getLevel() {
-        return level;
+    public String getSeniority() {
+        return seniority;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setSeniority(String seniority) {
+        this.seniority = seniority;
     }
-
-    public String getEnglishLevel() {
-        return englishLevel;
+    
+    @Override
+    public String toString() {
+        return "Skill:" + "\n languageProgramming=" + languageProgramming + "\n seniority=" + seniority +'}';
     }
-
-    public void setEnglishLevel(String englishLevel) {
-        this.englishLevel = englishLevel;
-    }
+    
     
 }

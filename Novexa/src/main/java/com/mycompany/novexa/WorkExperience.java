@@ -56,4 +56,11 @@ public class WorkExperience {
     public void setRolSpecification(String rolSpecification) {
         this.rolSpecification = rolSpecification;
     }
+
+    @Override
+    public String toString() {
+        return "WorkExperience{" + "\ncompanyName=" + companyName + "\nposition=" + position + "\nrolSpecification=" + rolSpecification + "\nduration=" + duration + '}';
+    }
+    
+    
 }
