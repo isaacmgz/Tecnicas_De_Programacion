@@ -10,18 +10,22 @@ package com.mycompany.novexa.tools;
  */
 
 import com.mycompany.novexa.*;
+import com.mycompany.novexa.AccountingCompany.SuperviseContract;
+import static com.mycompany.novexa.AccountingCompany.SuperviseContract.contracts;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
 public class ManageClient {
     
-    private void ClientMenu(){
+    public static ArrayList<Client> clients = new ArrayList<>();
+    
+    public static void clientMenu(){
         String option;
         
         do {
             option = JOptionPane.showInputDialog(
                 "Client Menu\n\n" +
-                "1. Sign up"+
+                "1. Sign up\n"+
                 "2. Search Freelancer Skill\n" +
                 "3. Propose Contract\n" +
                 "4. Exit\n\n" +
@@ -30,12 +34,12 @@ public class ManageClient {
 
             switch(option) {
                 case "1":
-                    
+                    addClient();
                 case "2":
                     String option_filter = JOptionPane.showInputDialog("Desea Buscar por \n1. Buscar sólo por lenguaje de programación \n2. Buscar por lenguaje de programacion y senority ");
                     if(option_filter.equals("1")){
                         String option_language = JOptionPane.showInputDialog("Por cuál lenguaje quiere filtrar");
-                        filterFreelancerLanguage(option_language);
+                        ManageNovexa.filterFreelancerLanguage(option_language);
                     }else if(option_filter.equals("2")){
                         String option_lan = JOptionPane.showInputDialog("Ingrese el lenguaje");
                         String option_level = JOptionPane.showInputDialog("Ingrese el nivel");
@@ -43,8 +47,7 @@ public class ManageClient {
                     }
                     break;
                 case "3":
-                    String input = JOptionPane.showInputDialog(null, "IdFreelancer");
-                    displayFreelancer(input);
+                    SuperviseContract.createContract();
                     break;
                 case "4":
                     JOptionPane.showMessageDialog(null, "Exiting the Admiistrator Menu");
@@ -55,15 +58,16 @@ public class ManageClient {
             }
         } while (!"4".equals(option));
     }
-    private void filterLanguageLevel(String searchSkill, String level){
+    
+    public static void filterLanguageLevel(String searchSkill, String level){
         for(Freelancer f : ManageFreelancer.freelancers){
             if(f.getSkill().getLanguageProgramming().equals(searchSkill) && f.getSkill().getLevel().equals(level)){
-                System.out.println("El freelancer"+f+"Usa el lenguaje"+ searchSkill + "y tiene un nivel de"+ level);
+                JOptionPane.showMessageDialog(null, "El freelancer"+f+"Usa el lenguaje"+ searchSkill + "y tiene un nivel de"+ level);
             }
         }
     }
     
-    public void addClient(){
+    public static void addClient(){
         Client client = new Client();
         
         client.setNameClient(JOptionPane.showInputDialog("Agregue el nombre del Client"));

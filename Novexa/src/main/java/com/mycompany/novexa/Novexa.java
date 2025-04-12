@@ -11,40 +11,42 @@ package com.mycompany.novexa;
  */
 
 import javax.swing.JOptionPane;
-import com.mycompany.novexa.tools.Management;
+// import com.mycompany.novexa.tools.Management;
+import com.mycompany.novexa.tools.ManageNovexa;
+import com.mycompany.novexa.tools.ManageFreelancer;
+import com.mycompany.novexa.tools.ManageClient;
 
 public class Novexa {
     
-    String name;
-    String location;
-    
-    static ClientContract contract;
-    
+    String name = "Novexa Company";
+    String location = "Universidad de Antioquia Bloque 18";
+        
     public static void principalMenu(){
         String option;
-        Management management = new Management(); // tool 
         
-        option = JOptionPane.showInputDialog(
-            null,
-            "Menú Principal\n\n" +
-            "1. enter the Administrator menu\n" +
-            "2. enter the Freelancer menu\n" +
-            "3. enter the Client menu\n\n" +
-            "Elige una opción:");
-        
-        if ("1".equals(option)){
-            management.administrationMenu();
-        }
-        if ("2".equals(option)){
-            management.freelancerMenu();
-        }
-        if ("3".equals(option)){
-            Client client = new Client();
-            management.clientMenu();
-        }
+        do{
+            option = JOptionPane.showInputDialog(
+                null,
+                "Menú Principal\n\n" +
+                "1. enter the Administrator menu\n" +
+                "2. enter the Freelancer menu\n" +
+                "3. enter the Client menu\n" +
+                "4. Exit Novexa\n\n" +
+                "Elige una opción:");
+
+            if ("1".equals(option)){
+                ManageNovexa.administrationMenu();
+            }
+            if ("2".equals(option)){
+                ManageFreelancer.freelancerMenu();
+            }
+            if ("3".equals(option)){
+                ManageClient.clientMenu();
+            }
+        }while(!"4".equals(option));
     }
     
     public static void main(String[] args) {
-        
+        principalMenu();
     }
 }

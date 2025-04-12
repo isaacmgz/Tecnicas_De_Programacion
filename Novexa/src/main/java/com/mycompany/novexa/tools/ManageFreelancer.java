@@ -10,14 +10,15 @@ package com.mycompany.novexa.tools;
  */
 
 import com.mycompany.novexa.*;
+import static com.mycompany.novexa.AccountingCompany.SuperviseContract.contracts;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
 public class ManageFreelancer {
     
-    public ArrayList<Freelancer> freelancers = new ArrayList<>();
+    public static ArrayList<Freelancer> freelancers = new ArrayList<>();
     
-    public void freelancerMenu(){
+    public static void freelancerMenu(){
         String option;
         
         do {
@@ -34,8 +35,25 @@ public class ManageFreelancer {
                     addFreelancer();
                     break;
                 case "2":
-                    String input = JOptionPane.showInputDialog(null, "IdFreelancer");
+                    String input = JOptionPane.showInputDialog(null, "Ingrese su IdFreelancer");
                     displayFreelancer(input);
+                        for(ClientContract c : contracts){
+                            if(c.getFreelancer().getIdFreelancer().equals(input)){
+                                JOptionPane.showMessageDialog(null, c.toString());// Mostrar
+                                
+                                double costo;
+                                double comissionn;
+                                costo = c.getContractCost();
+                                comissionn = costo*0.1;
+                                
+                                JOptionPane.showMessageDialog(null, "El costo total del contrato un pago de "+costo);
+                                JOptionPane.showMessageDialog(null, "Y le corresponde una comisión a la empresa de "+comissionn);
+                                JOptionPane.showMessageDialog(null, "A ti te toca:"+(costo-comissionn));
+                            }
+                         
+                        }JOptionPane.showMessageDialog(null, "Aún no tienes contratos");
+                    
+                    
                     break;
                 case "3":
                     JOptionPane.showMessageDialog(null, "Exiting the Admiistrator Menu");
@@ -47,16 +65,16 @@ public class ManageFreelancer {
         } while (!"3".equals(option));
     }
     
-    public void addFreelancer() {
+    public static void addFreelancer() {
 
         String option;
 
         Freelancer freelancer = new Freelancer();
         
         freelancer.setName(JOptionPane.showInputDialog("Agregue el nombre del Freelancer"));
-        freelancer.setIdFreelancer(JOptionPane.showInputDialog("Agregue el Id del Freelancer"));
+        freelancer.setIdFreelancer(JOptionPane.showInputDialog("Agregue el Id del Freelancer")); 
         freelancer.setEmailFreelancer(JOptionPane.showInputDialog("Agregue el correo del Freelancer"));
-        freelancer.setCostPerHour(Integer.parseInt(JOptionPane.showInputDialog("Agregue el costo por hora del Freelancer")));
+        freelancer.setCostPerHour(Integer.parseInt(JOptionPane.showInputDialog("Agregue el costo por hora del Freelancer ($USD)"))); 
         freelancer.setNationality(JOptionPane.showInputDialog("Agregue la nacionalidad del Freelancer"));
 
         do {
@@ -130,54 +148,13 @@ public class ManageFreelancer {
     JOptionPane.showMessageDialog(null, "Freelancer agregado correctamente.");
     }
     
-    public void filterFreelancerLanguage(String searchSkill){
-        for(Freelancer f : freelancers){
-            if(f.getSkill().getLanguageProgramming().equals(searchSkill)){
-                System.out.println("El freelancer"+f+"Usa el lenguaje"+ searchSkill);
-            }
-        }
-    }
-    
-    public void displayFreelancer(String IdFreelancer){
+    public static void displayFreelancer(String IdFreelancer){
         for(Freelancer f: freelancers){
             if(f.getIdFreelancer().equals(IdFreelancer)){
-                System.out.println(f.toString());
+                JOptionPane.showMessageDialog(null, f.toString());
             }else {
-                System.out.println("Este Freelancer no esta registrado");
+                JOptionPane.showMessageDialog(null, "Este Freelancer no esta registrado");
             }
         }       
-    }
-
-    public void findFreelancer() {
-        String searchId = JOptionPane.showInputDialog("Ingrese el Id del Freelancer a buscar");
-        Freelancer found = null;
-        for(Freelancer f : freelancers) {
-            if(f.getIdFreelancer().equals(searchId)) {
-                found = f;
-                break;
-            }
-        }
-        if(found != null) {
-            JOptionPane.showMessageDialog(null, "Freelancer encontrado: " + found.getName());
-        } else {
-            JOptionPane.showMessageDialog(null, "Freelancer no encontrado.");
-        }
-    }
-    
-    public boolean verificationFreelancer(String IdFreelancer){
-        for(Freelancer f: freelancers){
-            if(f.getIdFreelancer().equals(IdFreelancer)){
-                return true;
-            }
-        }System.out.println("Este Freelancer no está registrado");
-        return false;
-    }
-    
-    public Freelancer getFreelancerById(String IdFreelancer){
-        for(Freelancer f: freelancers){
-            if(f.getIdFreelancer().equals(IdFreelancer)){
-                return f;
-            }
-        }return null;
     }
 }

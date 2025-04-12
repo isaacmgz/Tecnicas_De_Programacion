@@ -11,18 +11,19 @@ package com.mycompany.novexa;
 public class ClientContract {
     private String nameProject;
     private int duration;
+    private double contractCost;
     private double comission;
-    
     private Freelancer freelancer;
     private Client client;
 
     public ClientContract() {
     }
 
-    public ClientContract(String nameProject, int duration, double comission, Freelancer freelancer, Client client) {
+    public ClientContract(String nameProject, int duration, double contractCost, double comission, Freelancer freelancer, Client client) {
         this.nameProject = nameProject;
         this.duration = duration;
-        this.comission = comission;
+        this.contractCost = contractCost;
+        this.comission = 0.1; // stablished comission
         this.freelancer = freelancer;
         this.client = client;
     }
@@ -66,5 +67,17 @@ public class ClientContract {
     public void setClient(Client client) {
         this.client = client;
     }
-    
+
+    @Override
+    public String toString() {
+        return "ClientContract{" + "nameProject=" + nameProject + ", duration=" + duration + ", comission=" + comission*100 +"%" + ", freelancer=" + freelancer + ", client=" + client + '}';
+    }
+
+    public double getContractCost() {
+        return contractCost;
+    }
+
+    public void setContractCost(double contractCost) {
+        this.contractCost = contractCost;
+    }
 }

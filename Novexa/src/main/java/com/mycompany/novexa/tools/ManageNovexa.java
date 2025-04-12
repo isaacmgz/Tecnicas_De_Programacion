@@ -11,11 +11,10 @@ package com.mycompany.novexa.tools;
 
 import com.mycompany.novexa.*;
 import javax.swing.JOptionPane;
-import java.util.ArrayList;
 
 public class ManageNovexa {
     
-    public void administrationMenu() {
+    public static void administrationMenu() {
         String option;
         
         do {
@@ -23,7 +22,8 @@ public class ManageNovexa {
                 "Administrator Menu\n\n" +
                 "1. Add a Freelancer\n" +
                 "2. Find a Freelancer\n" +
-                "3. Exit\n\n" +
+                "3. Check bank state\n" + // Pendiente por hacer
+                "4. Exit\n\n" +
                 "Elige una opción:"
             );
 
@@ -44,5 +44,29 @@ public class ManageNovexa {
                     break;
             }
         } while (!"3".equals(option));
+    }
+    
+    public static void filterFreelancerLanguage(String searchSkill) {
+        for(Freelancer f : ManageFreelancer.freelancers){
+            if(f.getSkill().getLanguageProgramming().equals(searchSkill)){
+                JOptionPane.showMessageDialog(null, "El freelancer"+f+"Usa el lenguaje"+ searchSkill);
+            }
+        }
+    }
+    
+    public static void findFreelancer() {
+        String searchId = JOptionPane.showInputDialog("Ingrese el Id del Freelancer a buscar");
+        Freelancer found = null;
+        for(Freelancer f : ManageFreelancer.freelancers) {
+            if(f.getIdFreelancer().equals(searchId)) {
+                found = f;
+                break;
+            }
+        }
+        if(found != null) {
+            JOptionPane.showMessageDialog(null, "Freelancer encontrado: " + found.getName());
+        } else {
+            JOptionPane.showMessageDialog(null, "Freelancer no encontrado.");
+        }
     }
 }

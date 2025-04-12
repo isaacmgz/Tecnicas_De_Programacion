@@ -100,6 +100,6 @@ public class Freelancer {
 
     @Override
     public String toString() {
-        return "Freelancer{" + "idFreelancer=" + idFreelancer + ", name=" + name + ", emailFreelancer=" + emailFreelancer + ", costPerHour=" + costPerHour + ", nationality=" + nationality + ", academicRecord=" + academicRecord + ", workExperience=" + workExperience + ", skill=" + skill + '}';
+        return "Freelancer{" + "\nidFreelancer=" + idFreelancer + "\nname=" + name + "\nemailFreelancer=" + emailFreelancer + "\n costPerHour=" + costPerHour + "\n nationality=" + nationality + "\nacademicRecord=" + academicRecord + "\nworkExperience=" + workExperience + "\nskill=" + skill + '}';
     }
 }
