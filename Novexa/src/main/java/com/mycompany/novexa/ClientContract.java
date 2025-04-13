@@ -13,6 +13,7 @@ public class ClientContract {
     private int duration;
     private double contractCost;
     private double comission;
+    
     private Freelancer freelancer;
     private Client client;
 

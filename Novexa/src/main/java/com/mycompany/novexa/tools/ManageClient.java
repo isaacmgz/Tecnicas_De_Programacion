@@ -34,6 +34,7 @@ public class ManageClient {
             switch(option) {
                 case "1":
                     addClient();
+                    JOptionPane.showMessageDialog(null, "Empresa registrada satisfactoriamente");
                     break;
                 case "2":
                     String option_filter = JOptionPane.showInputDialog(
@@ -52,6 +53,7 @@ public class ManageClient {
                     break;
                 case "3":
                     SuperviseContract.createContract();
+                    JOptionPane.showMessageDialog(null, "Contrato registrado satisfactoriamente");
                     break;
             }//endSwitch
         } while (!"4".equals(option));
@@ -66,7 +68,7 @@ public class ManageClient {
             }
         }
         if (key==0){
-            JOptionPane.showMessageDialog(null, "No se encontró ningun Freelancer que use este lenguaje");
+            JOptionPane.showMessageDialog(null, "No se encontró ningun Freelancer que use este lenguaje y sea tal nivel de seniority");
         }
     }
     
@@ -75,10 +77,11 @@ public class ManageClient {
         for(Freelancer f : ManageFreelancer.freelancers){
             if(f.getSkill().getLanguageProgramming().equals(searchSkill)){
                 JOptionPane.showMessageDialog(null, "El freelancer"+f+"Usa el lenguaje"+ searchSkill);
+                key++;
             }
         }
         if (key==0){
-            JOptionPane.showMessageDialog(null, "No se encontró ningun Freelancer que use este lenguaje y sea tal nivel de seniority");
+            JOptionPane.showMessageDialog(null, "No se encontró ningun Freelancer que use este lenguaje");
         }
     }
     

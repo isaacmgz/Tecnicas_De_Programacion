@@ -37,24 +37,25 @@ public class ManageFreelancer {
                 case "2":
                     String input = JOptionPane.showInputDialog(null, "Ingrese su IdFreelancer");
                     displayFreelancer(input);
+                    boolean gotContract = false;
                         for(ClientContract c : contracts){
                             if(c.getFreelancer().getIdFreelancer().equals(input)){
                                 JOptionPane.showMessageDialog(null, c.toString());// Mostrar
-                                
+                                gotContract = true;
                                 double costo;
                                 double comissionn;
                                 costo = c.getContractCost();
                                 comissionn = costo*0.1;
                                 
-                                JOptionPane.showMessageDialog(null, "El costo total del contrato un pago de "+costo);
-                                JOptionPane.showMessageDialog(null, "Le corresponde una comisión a la empresa de "+comissionn);
-                                JOptionPane.showMessageDialog(null, "A ti te toca:"+(costo-comissionn));
+                                JOptionPane.showMessageDialog(
+                                        null, "El costo total del contrato para el proyecto"+c.getNameProject()+" sería de "+costo+" $USD"+
+                                              "\nLe corresponde una comisión a la empresa de "+comissionn+" $USD"+
+                                              "\nA ti te toca:"+(costo-comissionn)+" $USD");
                             }//endIf
-                        }JOptionPane.showMessageDialog(null, "Aún no tienes contratos");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida.");
-                    break;
+                        }if(!gotContract){
+                            JOptionPane.showMessageDialog(null, "Aún no tienes contratos");
+                        }
+                        break;
             }//endSwitch
         } while (!"3".equals(option));
     }
@@ -112,7 +113,7 @@ public class ManageFreelancer {
                     workExperience.setRolSpecification(rolSpecification);
                     //freelancer.setWorkExperience(workExperience);
                     
-                    int duration = Integer.parseInt(JOptionPane.showInputDialog("cuanto tiempo estuvo en la empresa (en años)"));
+                    int duration = Integer.parseInt(JOptionPane.showInputDialog("cuanto tiempo estuvo en la empresa (en meses)"));
                     workExperience.setDuration(duration);
                     
                     freelancer.setWorkExperience(workExperience);
@@ -143,12 +144,16 @@ public class ManageFreelancer {
     }
     
     public static void displayFreelancer(String IdFreelancer){
+        boolean gotRegister = false;
         for(Freelancer f: freelancers){
             if(f.getIdFreelancer().equals(IdFreelancer)){
                 JOptionPane.showMessageDialog(null, f.toString());
-            }else {
-                JOptionPane.showMessageDialog(null, "Este Freelancer no esta registrado");
+                gotRegister = true;
+                break;
             }
+            }
+        if (!gotRegister){
+            JOptionPane.showMessageDialog(null, "Este Freelancer no esta registrado");
         }       
     }
 }

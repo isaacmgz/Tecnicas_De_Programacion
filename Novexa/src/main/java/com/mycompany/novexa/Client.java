@@ -35,7 +35,10 @@ public class Client {
     public void setNameClient(String nameClient) {
         this.nameClient = nameClient;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Client{" + "nameClient=" + nameClient + ", clientEmail=" + clientEmail + '}';
+    }
     
 }

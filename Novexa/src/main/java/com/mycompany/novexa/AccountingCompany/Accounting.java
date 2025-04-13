@@ -25,12 +25,11 @@ public class Accounting {
             netProfits = netProfits + c.getContractCost();
             companyProfits = companyProfits + c.getContractCost()*0.1;
             freelancerEarnings = freelancerEarnings + (c.getContractCost()-c.getContractCost()*0.1);
-            
+        }    
         JOptionPane.showInternalMessageDialog(
             null, "Las ganancias netas generadas por la empresa son de: "+netProfits+
             "\nLas ganancias totales para la empresa es de: "+companyProfits+
             "\nLas ganancias totales generadas para los Freelancer son de"+freelancerEarnings
         );
-        }
     }
 }

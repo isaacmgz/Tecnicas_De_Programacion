@@ -47,7 +47,7 @@ public class ManageNovexa {
             }
         }
         if(found != null) {
-            JOptionPane.showMessageDialog(null, "Freelancer encontrado: " + found.getName());
+            JOptionPane.showMessageDialog(null, "Freelancer encontrado: " + found.toString());
         } else {
             JOptionPane.showMessageDialog(null, "Freelancer no encontrado.");
         }

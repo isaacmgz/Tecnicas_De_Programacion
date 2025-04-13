@@ -25,29 +25,34 @@ public class SuperviseContract {
         String nameClient = JOptionPane.showInputDialog("Ingrese el nombre de su empresa");
         
         double totalCost=0;
-        
+        boolean found = false;
+
         for ( Client c : clients){
             if(nameClient.equals(c.getNameClient())){ //Asegurarnos que la empresa esté registrada
+                found=true;
                 
                 String nameProject = JOptionPane.showInputDialog("Ingrese el nombre del proyecto");
                 contract.setNameProject(nameProject);
                 
                 int durationProject = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la duración del proyecto en meses"));
                 contract.setDuration(durationProject);
-                String idFreelancer = JOptionPane.showInputDialog("Ingrese el ID del Freelancer a contratar");
                 
-                while (verificationFreelancer(idFreelancer)){
-                    contract.setFreelancer(getFreelancerById(idFreelancer));
-                    contract.setContractCost(totalCost + (getFreelancerById(idFreelancer).getCostPerHour()*durationProject*160));
-                }
-            }//endIf
-            else{
-                JOptionPane.showMessageDialog(null,"Asegurese que su empresa esté registrada primero");
+                String idFreelancer = JOptionPane.showInputDialog("Ingrese el ID del Freelancer a contratar");
+                contract.setClient(c);
+                
+                if (verificationFreelancer(idFreelancer)) {
+                    Freelancer freelancer = getFreelancerById(idFreelancer);
+                    contract.setFreelancer(freelancer);
+                    contract.setContractCost(totalCost + (freelancer.getCostPerHour() * durationProject * 160));
+                    contracts.add(contract);
+                    JOptionPane.showMessageDialog(null,contract.toString());
+                }//endIf
                 break;
-            }
+            }//endIf
         }//endFor 
-        contracts.add(contract);
-        JOptionPane.showMessageDialog(null, contract.toString());
+        if(!found){
+                JOptionPane.showMessageDialog(null,"Asegurese que su empresa esté registrada primero");
+            }
     }
     
     public static boolean verificationFreelancer(String IdFreelancer){
