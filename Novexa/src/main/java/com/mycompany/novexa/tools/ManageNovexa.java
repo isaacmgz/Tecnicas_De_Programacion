@@ -1,19 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.novexa.tools;
 
 /**
- *
- * @author isaacmgz
+ * This class provides provides administrative functionalities for the Novexa application.
+ * It includes menu-driven operations to find freelancers and check the company's bank state.
  */
+
+package com.mycompany.novexa.tools;
+
 import com.mycompany.novexa.*;
 import javax.swing.JOptionPane;
 import com.mycompany.novexa.AccountingCompany.Accounting;
 
 public class ManageNovexa {
 
+    /**
+     * Displays the administration menu and handles user input for different administrative tasks.
+     * The menu provides options to find a freelancer, check the bank state, and exit the menu.
+     */
     public static void administrationMenu() {
         String option;
         do {
@@ -34,15 +36,24 @@ public class ManageNovexa {
         } while (!"3".equals(option));
     }
 
+    /**
+     * Searches for a freelancer by their ID. If found, displays the freelancer's details.
+     * If not found, shows an error message.
+     */
     public static void findFreelancer() {
+        // Prompt the user for the freelancer's ID
         String searchId = JOptionPane.showInputDialog("Enter the Freelancer's ID you want to look for");
         Freelancer found = null;
+
+        // Iterate through the list of freelancers to find a match
         for (Freelancer f : ManageFreelancer.freelancers) {
             if (f.getIdFreelancer().equals(searchId)) {
                 found = f; 
                 break;
             }
         }
+
+        // Display the freelancer's details if found, otherwise show an error message
         if (found != null) {
             ManageFreelancer.displayFreelancer(found.getIdFreelancer());
         } else {
